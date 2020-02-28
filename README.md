@@ -1,4 +1,4 @@
-# ISA
+# ISA - Internet softverske arhitekture
 
 Projekat predstavlja aplikaciju koja omogucava korisnicima da rezervisu avionske karte za zeljenu
 destinaciju i datum. Prilikom rezervacije avionske karte, korisniku se dodatno moze ponuditi da rezervise
