@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="98f83652-ad43-4f79-a952-7f86d0b57ef4" name="Default Changelist" comment="commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/FlightReservationApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/common/TimeProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/AffiliateContoller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/AirlineController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/AirplaneSeatArrangementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/AuthenticationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/CarController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/CarReservationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/CarServiceContoller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/DestinationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/FlightController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/FlightDestinationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/FriendsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/HotelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/ReservationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/RoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/RoomReservationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/ActivateAccountDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/AffiliateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/AirlineDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/AvailableCarsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/AvailableRoomsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CarDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CarReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CarServiceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateAirlineDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateAndUpdateAffiliateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateAndUpdateCarDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateAndUpdateCarServiceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateAndUpdateHotelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateAndUpdateRoomDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateCarReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateFlightDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/CreateRoomReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/DestinationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FindUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FlightDestinationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FlightDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FlightFilterDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FlightSearchDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FlightShowInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/FriendshipDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/HotelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/Rating/CompareDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/Rating/RatingAirlineDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/Rating/RatingCarDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/Rating/RatingCarServiceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/Rating/RatingFlightDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/RegisterUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/ReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/RoomDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/RoomReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/SearchSearchServiceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/dto/SortCarServicesByCity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Affiliate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Airline.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/AirplaneSeatArrangement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Authority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/CarReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/CarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Destination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Flight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/FlightDestination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/FlightReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Friends.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Hotel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/PassengerOnFlightSeat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Rating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Room.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/RoomReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/Seat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/model/UserTokenState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/AddressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/AffiliateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/AirlineRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/AirplaneSeatArrangementRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/AuthorityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/CarRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/CarReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/CarServiceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/DestinationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/FlightDestinationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/FlightRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/FlightReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/FriendsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/HotelRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/PassengerOnFlightSeatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/RatingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/ReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/RoomRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/RoomReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/SeatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/security/TokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/security/auth/JwtAuthenticationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/security/auth/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/security/auth/TokenAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/security/auth/TokenBasedAuthentication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/AddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/AffiliateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/AirlineService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/AirplaneSeatArrangementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/CarReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/CarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/CarServiceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/DestinationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/FlightDestinationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/FlightReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/FlightService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/FriendsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/HotelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/RatingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/ReservationsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/RoomReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/RoomService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/SeatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/AffiliateServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/AirlineServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/AirplaneSeatArrangementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/CarReservationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/CarServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/CarServiceServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/DestinationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/FlightDestinationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/FlightReservationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/FlightServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/FriendsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/HotelServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/RatingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/ReservationsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/RoomReservationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/RoomServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/SeatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isa/reservation/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isa/reservation/FlightReservationApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isa/reservation/service/AirlineServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/FlightReservationApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/common/TimeProvider.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/config/WebSecurityConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/AffiliateContoller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/AirlineController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/AirplaneSeatArrangementController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/AuthenticationController$PasswordChanger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/AuthenticationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/CarController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/CarReservationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/CarServiceContoller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/DestinationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/FlightController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/FlightDestinationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/FriendsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/HotelController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/ReservationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/RoomController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/RoomReservationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/ActivateAccountDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/AffiliateDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/AirlineDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/AvailableCarsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/AvailableRoomsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CarDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CarReservationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CarServiceDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateAirlineDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateAndUpdateAffiliateDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateAndUpdateCarDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateAndUpdateCarServiceDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateAndUpdateHotelDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateAndUpdateRoomDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateCarReservationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateFlightDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateReservationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/CreateRoomReservationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/DestinationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FindUserDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FlightDestinationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FlightDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FlightFilterDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FlightSearchDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FlightShowInfoDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/FriendshipDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/HotelDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/Rating/CompareDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/Rating/RatingAirlineDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/Rating/RatingCarDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/Rating/RatingCarServiceDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/Rating/RatingFlightDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/RegisterUserDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/ReservationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/RoomDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/RoomReservationDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/SearchSearchServiceDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/dto/SortCarServicesByCity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Address.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Affiliate.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Airline.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/AirplaneSeatArrangement.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Authority.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Car.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/CarReservation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/CarService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Destination.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Flight.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/FlightDestination.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/FlightReservation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Friends.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Hotel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/PassengerOnFlightSeat.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Rating.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Reservation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Room.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/RoomReservation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/Seat.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/model/UserTokenState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/AddressRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/AffiliateRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/AirlineRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/AirplaneSeatArrangementRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/AuthorityRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/CarRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/CarReservationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/CarServiceRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/DestinationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/FlightDestinationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/FlightRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/FlightReservationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/FriendsRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/HotelRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/PassengerOnFlightSeatRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/RatingRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/ReservationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/RoomRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/RoomReservationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/SeatRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/security/TokenUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/security/auth/JwtAuthenticationRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/security/auth/RestAuthenticationEntryPoint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/security/auth/TokenAuthenticationFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/security/auth/TokenBasedAuthentication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/AddressService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/AffiliateService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/AirlineService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/AirplaneSeatArrangementService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/CarReservationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/CarService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/CarServiceService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/DestinationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/FlightDestinationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/FlightReservationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/FlightService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/FriendsService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/HotelService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/RatingService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/ReservationsService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/RoomReservationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/RoomService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/SeatService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/AddressServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/AffiliateServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/AirlineServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/AirplaneSeatArrangementServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/CarReservationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/CarServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/CarServiceServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/CustomUserDetailsService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/DestinationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/FlightDestinationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/FlightReservationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/FlightServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/FriendsServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/HotelServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/RatingServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/ReservationsServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/RoomReservationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/RoomServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/SeatServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/isa/reservation/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/reservation-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/reservation-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/isa/reservation/FlightReservationApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/isa/reservation/service/AirlineServiceTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Teodora\.IntelliJIdea2018.3\projektiZaPraksu\ISA\Backend\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YRljO5IjbyZx0Pbb8Ar8gMCoVF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Teodora\.IntelliJIdea2018.3\projektiZaPraksu\ISA\Backend" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="98f83652-ad43-4f79-a952-7f86d0b57ef4" name="Default Changelist" comment="" />
+      <created>1582913421950</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582913421950</updated>
+      <workItem from="1582913423407" duration="1525000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="253" y="0" key="CommitChangelistDialog2" timestamp="1582914922584">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="253" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1582914922584" />
+  </component>
+</project>
