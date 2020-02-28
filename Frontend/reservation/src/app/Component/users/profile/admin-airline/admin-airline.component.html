@@ -1,0 +1,74 @@
+<div class="row pull-right">
+  <button class="btn btn-outline-primary" (click)="showMonthly()" *ngIf="monthlyVisible === false">Monthly</button>
+  <button class="btn btn-outline-primary" (click)="showWeekly()" *ngIf="weeklyVisible === false">Weekly</button>
+  <button class="btn btn-outline-primary" (click)="showDaily()" *ngIf="dailyVisible === false">Daily</button>
+</div>
+<br><br>
+<div *ngIf="monthlyVisible === true">
+  <div style="display: block; width: 60%; height: 60%">
+    <canvas baseChart
+            [datasets]="barChartDataMonthly"
+            [labels]="barChartLabelsMonthly"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+<div *ngIf="weeklyVisible === true">
+  <div style="display: block; width: 60%; height: 60%">
+    <canvas baseChart
+            [datasets]="barChartDataWeekly"
+            [labels]="barChartLabelsWeekly"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+<div *ngIf="dailyVisible === true">
+  <div style="display: block; width: 60%; height: 60%">
+    <canvas baseChart
+            [datasets]="barChartDataDaily"
+            [labels]="barChartLabelsDaily"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+
+<div>
+  <h4>Incomes for</h4>
+  <input name="incomePeriod" type="number" [(ngModel)]="incomePeriod" placeholder="Number of days">
+  <button class="btn btn-outline-primary" (click)="calculateIncome()">Calculate income</button>
+  <label class="col-sm-3">Incomes: {{income}}€</label>
+</div>
+<br>
+<div>
+  <h4 class="display-4">
+    Ratings
+  </h4>
+  <div class="d-flex-row">
+    <h4>{{airline.name}} ratings</h4>
+    <label class="col-sm-8">Number of ratings: {{airline['numberOfRating']}}</label>
+    <label class="col-sm-8">Average rating: {{airline['averageRating']}}</label>
+    <hr>
+  </div>
+  <h4>Flights</h4>
+
+  <div *ngFor="let f of this.airline.flights">
+    <div class="flex-md-row">
+      <h5 class="col-sm-5"> From: {{f['from']['name']}} {{f['from']['shortName']}}, {{f['from']['address']['city']}}, {{f['from']['address']['country']}}</h5>
+      <h5 class="col-sm-8"> To: {{f['to']['name']}} {{f['to']['shortName']}}, {{f['to']['address']['city']}}, {{f['to']['address']['country']}} </h5>
+    </div>
+    <div class="flex-row">
+      <label>&nbsp;&nbsp;&nbsp;Number of ratings: {{f['numberOfRating']}}</label>
+      <label>&nbsp;&nbsp;&nbsp;Average rating: {{f['averageRating']}}</label>
+    </div>
+    <hr>
+  </div>
+</div>

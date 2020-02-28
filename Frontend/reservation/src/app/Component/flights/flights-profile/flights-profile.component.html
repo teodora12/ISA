@@ -1,0 +1,309 @@
+<div class="nav flex-row nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+  <a class="nav-link nav-item active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+     aria-controls="v-pills-home" aria-selected="true">General</a>
+  <a class="nav-link nav-item" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+     aria-controls="v-pills-profile" aria-selected="false" *ngIf="userRole === 'ROLE_ADMIN_AIRLINE' && user.inChargeOf === airline.id">Seats</a>
+</div>
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <br />
+    <div *ngIf="userRole === 'ROLE_ADMIN_AIRLINE' && user.inChargeOf === airline.id">
+      <form (ngSubmit)="f.form.valid && saveFlight()"  name="form" #f="ngForm" style="margin-left: 15%; margin-right: 15%">
+
+        <div class="form-group row">
+          <label for="inputFrom3" class="col-sm-2 col-form-label">From</label>
+          <div class="col-sm-10">
+            <select id="inputFrom3" class="form-control" [(ngModel)]="flight.fromDest"  name="from">
+              <option *ngFor="let dest of airline['availableDestinations']"
+                      [ngValue]="dest.id">{{dest.name}} {{dest.shortName}}, {{dest.address.country}}, {{dest.address.city}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputTo3" class="col-sm-2 col-form-label">To</label>
+          <div class="col-sm-10">
+            <select id="inputTo3" class="form-control" [(ngModel)]="flight.toDest" name="to">
+              <option *ngFor="let des of airline['availableDestinations']"
+                      [ngValue]="des.id">{{des.name}} {{des.shortName}}, {{des.address.country}}, {{des.address.city}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-3 col col-form-label" for="dest">Flight changes locations:</label>
+        </div>
+        <ul class="list-group" *ngFor="let destination of connecting; index as i">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <p><b>{{destination['name']}} {{destination['shortName']}}</b>, {{destination['address']['city']}}, {{destination['address']['country']}}</p>
+            <span><a (click)="deleteDestination(i)"><img src="https://img.icons8.com/carbon-copy/100/000000/delete.png" width="30" height="30"></a></span>
+            <!--class="badge badge-primary badge-pill"-->
+          </li>
+        </ul>
+
+
+        <br/>
+
+        <label class="row" for="dest">New destination</label>
+        <div class="row">
+          <span class="pull-left col-sm-9" style=" width: 300px;margin-bottom: 20px;">
+            <ng-select id="dest"
+                       [items]="airline.availableDestinations"
+                       [multiple]="true"
+                       name="selectDestination"
+                       [closeOnSelect]="false"
+                       [searchable]="false"
+                       bindLabel="name"
+                       bindValue="item"
+                       placeholder="Select destinations"
+                       [(ngModel)]="selectedDestinations"
+                       (change)="onChange($event)">
+            </ng-select>
+          </span>
+          <button type="button" class="btn btn-primary pull-right" style="margin-left: 10%; width: 10%; height: 2%" (click)="addDestinations()">Add</button>
+
+        </div>
+
+        <div class="form-group row" id="departure" style="align-items: center">
+          <label for="inpDepDate" class="col">Departure</label>
+          <div class="col">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="inpDepDate" readonly (click)="d1.toggle()"
+                     name="d1" #c1="ngModel" [(ngModel)]="departureDate" ngbDatepicker #d1="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary fa-calendar-o" (click)="d1.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+          <!--<ngb-timepicker [(ngModel)]="departureTime" spinners="false" [meridian]="false" name="depTime"></ngb-timepicker>-->
+          <span><input type="time" [(ngModel)]="departureTime" name="departureTime"></span>
+        </div>
+        <hr/>
+        <div class="form-group row" id="arrival" style="align-items: center">
+          <label for="inpArrDate" class="col">Arrival</label>
+          <div class="col">
+            <div class="input-group ">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="inpArrDate"
+                     name="d2" #c2="ngModel" [(ngModel)]="arrivalDate" ngbDatepicker #d2="ngbDatepicker" readonly (click)="d2.toggle()">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary fa-calendar-times-o" (click)="d2.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+          <!--<ngb-timepicker [(ngModel)]="arrivalTime" [meridian]="false" name="arrTime"></ngb-timepicker>-->
+          <span><input type="time" [(ngModel)]="arrivalTime" name="arrivalTime"></span>
+        </div>
+        <hr/>
+
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="form-group">
+              <label for="inputACountry3" class="col-sm-2 col-form-label">Distance[km]</label>
+              <input type="text" pattern="[0-9]+" class="form-control" id="inputACountry3" placeholder="Distance"
+                     #distance="ngModel" aria-multiline="true" [(ngModel)]="flight['distance']"
+                     name="distance" [ngClass]="{ 'is-invalid': f.submitted && distance.invalid }" required>
+              <div *ngIf="f.submitted && distance.invalid" class="invalid-feedback">
+                <div *ngIf="distance.errors.required">Distance is required</div>
+              </div>
+            </div>
+            <!--<div class="form-group">-->
+              <!--<label for="price" class="col-sm-2 col-form-label">Price[€]</label>-->
+              <!--<input type="text" class="form-control" id="price" placeholder="Price"-->
+                     <!--aria-multiline="true" [(ngModel)]="flight['price']" name="price">-->
+            <!--</div>-->
+            <div class="form-group">
+              <label for="averageRating" class="col-sm-6 col-form-label xl-inline">Average rating</label>
+              <label id="averageRating" class="form-control">
+                {{flight.averageRating}}
+              </label>
+            </div>
+          </div>
+
+          <div class="col-sm-5">
+            <div class="form-group">
+              <label for="inputStreet3" class="col-sm-2 col-form-label">Duration[h]</label>
+              <input type="text" pattern="[0-9]+" class="form-control" id="inputStreet3" placeholder="Duration"
+                     aria-multiline="true" [(ngModel)]="flight['duration']" name="duration" #duration="ngModel"
+                     [ngClass]="{ 'is-invalid': f.submitted && duration.invalid }" required>
+              <div *ngIf="f.submitted && duration.invalid" class="invalid-feedback">
+                <div *ngIf="duration.errors.required">Duration is required</div>
+              </div>
+            </div>
+            <!--<div class="form-group">-->
+              <!--<label for="seatArrangement" class="col-sm-6 col-form-label xl-inline">Seat arrangement</label>-->
+              <!--<select id="seatArrangement" class="form-control" [(ngModel)]="flight.seatArrangement" name="seat">-->
+                <!--<option *ngFor="let arr of airplaneSeatArrangements" [ngValue]="arr">{{arr.name}} (rows: {{arr.seatRows}}, columns: {{arr.seatColumns}})</option>-->
+              <!--</select>-->
+            <!--</div>-->
+
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group row">
+          <label for="prices1" class="col-sm-2 col-form-label">Price:</label>
+          <div class="col-sm-8" id="prices1">
+            <div class="row">
+              <label for="price11" class="col-sm-4 col-form-label">Economy class</label>
+              <input type="text" pattern="[0-9]+" class="form-control col" id="price11" [(ngModel)]="flight['economyPrice']"
+                     name="economyPrice" placeholder="Price for economy class"#economyPrice="ngModel" [ngClass]="{ 'is-invalid': f.submitted && economyPrice.invalid }" required>
+              <div *ngIf="f.submitted && economyPrice.invalid" class="invalid-feedback">
+                <div *ngIf="economyPrice.errors.required">Economy price is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <label for="price21" class="col-sm-4 col-form-label">Premium economy class</label>
+              <input type="text" pattern="[0-9]+" class="form-control col" id="price21" [(ngModel)]="flight['premiumEconomyPrice']"
+                     name="premiumEconomyPrice" placeholder="Price for premium economy class" #premiumEconomyPrice="ngModel" [ngClass]="{ 'is-invalid': f.submitted && premiumEconomyPrice.invalid }" required>
+              <div *ngIf="f.submitted && premiumEconomyPrice.invalid" class="invalid-feedback">
+                <div *ngIf="premiumEconomyPrice.errors.required">Premium economy price is required</div>
+              </div>
+
+            </div>
+            <div class="row">
+              <label for="price31" class="col-sm-4 col-form-label">Business class</label>
+              <input type="text" pattern="[0-9]+" class="form-control col" id="price31" [(ngModel)]="flight['businessPrice']"
+                     name="businessPrice" placeholder="Price for business class" #businessPrice="ngModel" [ngClass]="{ 'is-invalid': f.submitted && businessPrice.invalid }" required>
+              <div *ngIf="f.submitted && businessPrice.invalid" class="invalid-feedback">
+                <div *ngIf="businessPrice.errors.required">Business price is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <label for="price41" class="col-sm-4 col-form-label">First class</label>
+              <input type="text" pattern="[0-9]+" class="form-control col" id="price41" [(ngModel)]="flight['firstPrice']"
+                     name="firstPrice" placeholder="Price for first class" #firstPrice="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstPrice.invalid }" required>
+              <div *ngIf="f.submitted && firstPrice.invalid" class="invalid-feedback">
+                <div *ngIf="firstPrice.errors.required">First class price is required</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <br>
+
+        <div class="form-group row">
+          <label for="baggageDescriptionTextArea">Baggage description</label>
+          <textarea class="form-control" id="baggageDescriptionTextArea" rows="3" [(ngModel)]="flight['baggageDescription']"
+                    name="baggageDescription"></textarea>
+        </div>
+
+        <div class="form-group row">
+          <label for="additionalServicesTextArea">Additional services</label>
+          <textarea class="form-control" id="additionalServicesTextArea" rows="3" [(ngModel)]="flight['additionalServices']"
+                    name="additionalServices"></textarea>
+        </div>
+
+
+        <br/><br/>
+        <button type="submit" class="btn btn-primary pull-right" style="margin-top: 10%; margin-bottom: 10%">Save</button>
+      </form>
+    </div>
+
+
+    <div *ngIf="userRole !== 'ROLE_ADMIN_AIRLINE' || user.inChargeOf !== airline.id" style="margin-left: 15%; margin-right: 15%">
+      <div class="form-group row">
+        <label for="inputFrom1" class="col-sm-2 col-form-label">From</label>
+        <div class="col-sm-10">
+          <label class="form-control" id="inputFrom1">{{fromDest['name']}} {{fromDest['shortName']}},
+            {{fromDest['address']['city']}} {{fromDest['address']['country']}}}</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputTo1" class="col-sm-2 col-form-label">To</label>
+        <div class="col-sm-10">
+          <label class="form-control" id="inputTo1">{{toDest['name']}} {{toDest['shortName']}},
+            {{toDest['address']['city']}} {{toDest['address']['country']}}}</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col col-form-label" for="flChanges">Flight changes locations:</label>
+        <div *ngIf="flight.flightChanges !== 0">
+          <ul id="flChanges" class="list-group col-sm-10" *ngFor="let destination of connecting" >
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <p><b>{{destination['name']}} {{destination['shortName']}}</b>, {{destination['address']['city']}}, {{destination['address']['country']}}</p>
+            </li>
+          </ul>
+        </div>
+        <label *ngIf="flight.flightChanges === 0" class="col">No flight changes</label>
+      </div>
+
+      <br/>
+
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="departure1" class="col-sm-2 col-form-label">Departure</label>
+          <label class="form-control" id="departure1">{{date1|date}} {{departureTime}}</label>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="arrival1" class="col-sm-2 col-form-label">Arrival</label>
+          <label class="form-control" id="arrival1">{{date2|date}} {{arrivalTime}}</label>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+        <label for="distance" class="col-sm-2 col-form-label">Distance</label>
+        <div class="col-sm-8">
+          <label class="form-control" id="distance">{{flight['distance']}} km</label>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="duration" class="col-sm-2 col-form-label">Duration</label>
+        <div class="col-sm-8">
+          <label class="form-control" id="duration">{{flight['duration']}} h</label>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="prices" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-8" id="prices">
+          <div class="row">
+            <label for="price1" class="col-sm-4 col-form-label">Economy class</label>
+            <label class="form-control col" id="price1">{{flight['economyPrice']}} €</label>
+          </div>
+          <div class="row">
+            <label for="price1" class="col-sm-4 col-form-label">Premium economy class</label>
+            <label class="form-control col" id="price2">{{flight['premiumEconomyPrice']}} €</label>
+
+          </div>
+          <div class="row">
+            <label for="price1" class="col-sm-4 col-form-label">Business class</label>
+            <label class="form-control col" id="price3">{{flight['businessPrice']}} €</label>
+          </div>
+          <div class="row">
+            <label for="price1" class="col-sm-4 col-form-label">First class</label>
+            <label class="form-control col" id="price4">{{flight['firstPrice']}} €</label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="averageRating1" class="col-sm-2 col-form-label">Average rating</label>
+        <div class="col-sm-8">
+          <label class="form-control" id="averageRating1">{{flight['averageRating']}} ★</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="baggageDescriptionLab">Baggage description</label>
+        <textarea readonly class="form-control" id="baggageDescriptionLab" multiple>{{flight['baggageDescription']}}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="additionalServicesLab">Additional services</label>
+        <textarea readonly class="form-control" id="additionalServicesLab" >{{flight['additionalServices']}}</textarea>
+      </div>
+
+      <br/><br/>
+      <button type="button" (click)="reservation()" class="btn btn-primary pull-right" *ngIf="userRole === 'ROLE_USER'"
+              style="margin-top: 10%; margin-bottom: 10%">Buy tickets</button>
+
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    <br />
+    <app-flight-seats></app-flight-seats>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+
+<div class="btn-toolbar" style="margin-left: 90%" *ngIf="userRole === 'ROLE_ADMIN'" >
+
+  <button  class="btn btn-primary" [routerLink]="['/rooms/new/'.concat(hotelId)]" >New room</button>
+  <br/>
+
+
+</div>
+
+
+<div class="list-group">
+  <div *ngFor="let room of hotel['rooms']" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="w-100 justify-content-between" >
+      <div class="d-flex-row">
+        <h5  > {{room['name']}}  </h5>
+
+      </div>
+
+
+      <div class="flex-row"><label class="col-sm-4">Number of beds: {{room['numberOfBeds']}}</label></div>
+
+      <div class="flex-row"><label class="col-sm-4">Price: {{room['price']}}€</label></div>
+
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<button *ngIf="userRole === 'ROLE_ADMIN'" style="margin-left: 95%" class="btn btn-primary" [routerLink]="['/carService/new']">New</button>
+<br/>
+<br/>
+
+<div *ngIf="admin === false" class="list-group">
+
+  <div  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let carService of carServices" >
+    <div class="d-flex w-100 justify-content-between" (click)="carServiceProfile(carService)">
+      <h5 class="mb-1" >{{carService.name}}</h5> <p class="mb-1">{{carService.averageRating}}</p>
+    </div>
+    <p class="mb-1">{{carService.description}}</p>
+    <span><a *ngIf="userRole === 'ROLE_ADMIN'" (click)="deleteCarService(carService)"><img src="https://img.icons8.com/carbon-copy/100/000000/delete.png" width="30" height="30"></a></span>
+  </div>
+</div>
+
+
+<div *ngIf="admin" class="list-group">
+
+  <div  class="list-group-item list-group-item-action flex-column align-items-start"  >
+    <div class="d-flex w-100 justify-content-between" (click)="carServiceProfile(adminCarS)">
+      <h5 class="mb-1" >{{adminCarS.name}}</h5> <p class="mb-1">{{adminCarS.averageRating}}</p>
+    </div>
+    <p class="mb-1">{{adminCarS.description}}</p>
+  </div>
+</div>

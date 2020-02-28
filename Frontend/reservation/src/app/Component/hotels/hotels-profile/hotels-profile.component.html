@@ -1,0 +1,116 @@
+
+
+<div class="nav flex-row nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+  <a class="nav-link nav-item active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+     aria-controls="v-pills-home" aria-selected="true">General</a>
+  <a class="nav-link nav-item" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+     aria-controls="v-pills-profile" aria-selected="false">Rooms</a>
+</div>
+
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <br />
+    <div *ngIf="userRole === 'ROLE_ADMIN'">
+      <form (submit)="saveHotel()">
+        <div class="form-group row">
+          <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName3" placeholder="Name" [(ngModel)]="hotel['name']"
+                   name="name">
+          </div>
+        </div>
+        <!--<div class="container">-->
+
+        <br/>
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+          <div class="col-sm-10">
+            <input id="inputName" placeholder="Search for location" autocomplete="true" autocapitalize="off"
+                   spellcheck="false" type="text" class="form-control" #search [formControl]="searchControl">
+          </div>
+        </div>
+
+        <!--</div>-->
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="inputACountry3" class="col-sm-2 col-form-label">Country</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputACountry3" placeholder="Country"
+                     aria-multiline="true" [(ngModel)]="hotel['address']['country']" name="country">
+            </div>
+            <div class="form-group">
+              <label for="inputCity3" class="col-sm-2 col-form-label">City</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputCity3" placeholder="Address"
+                     aria-multiline="true" [(ngModel)]="hotel['address']['city']" name="city">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="inputStreet3" class="col-sm-2 col-form-label">Street</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputStreet3" placeholder="Street"
+                     aria-multiline="true" [(ngModel)]="hotel['address']['street']" name="street">
+            </div>
+            <div class="form-group">
+              <label for="inputAddressNumber3" class="col-sm-2 col-form-label">Number</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputAddressNumber3"
+                     placeholder="Street number" aria-multiline="true" [(ngModel)]="hotel['address']['addressNumber']"
+                     name="addressNumber">
+            </div>
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+        </div>
+
+        <div class="form-group">
+          <label for="descriptionTextarea1">Advertising description</label>
+          <textarea class="form-control" id="descriptionTextarea1" rows="3" [(ngModel)]="hotel.description"
+                    name="description"></textarea>
+        </div>
+        <br/>
+
+        <br/>
+        <div class="form-group row" align="right">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div *ngIf="userRole === ''">
+      <div class="form-group row">
+        <label for="inputName1" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <label class="form-control" id="inputName1" name="name">{{hotel['name']}}</label>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="form-group row">
+        <label for="address" class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-6">
+          <label class="form-control" id="address">{{hotel['address']['country']}}, {{hotel['address']['city']}}
+            , {{hotel['address']['street']}}, {{hotel['address']['addressNumber']}}</label>
+        </div>
+        <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+          <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        </agm-map>
+      </div>
+
+      <div class="form-group">
+        <label for="descriptionTextarea">Advertising description</label>
+        <label class="form-control" id="descriptionTextarea">{{hotel.description}}</label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    <br />
+    <app-hotels-profile-rooms></app-hotels-profile-rooms>
+  </div>
+
+</div>

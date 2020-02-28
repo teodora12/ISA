@@ -1,0 +1,126 @@
+<br><br>
+<form style="text-align: center" (ngSubmit)="search()" name="form">
+  <div class="form-group row">
+    <label for="from" class="col-sm-2 col-form-label">From</label>
+    <input type="text" id="from" name="from" [(ngModel)]="flight.from"
+           class="form-control col-sm-8" >
+  </div>
+  <div class="form-group row">
+    <label for="to" class="col-sm-2 col-form-label">To</label>
+    <input type="text" id="to" name="to" [(ngModel)]="flight.to" class="form-control col-sm-8" >
+  </div>
+
+<!--<ngb-datepicker #d [minDate]="{year: 2018, month: 1, day: 1}"-->
+<!--[maxDate]="{year: 2020, month: 12, day: 31}"-->
+<!--(select)="onDateSelect($event)" id="departure"-->
+<!--&gt;</ngb-datepicker>-->
+  <div class="row">
+    <div class="col" >
+      <ngb-datepicker #dp (select)="onDateSelect($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+      </ngb-datepicker>
+      <ng-template #t let-date let-focused="focused">
+      <span class="custom-day"
+            [class.focused]="focused"
+            [class.range]="isRange(date)"
+            [class.faded]="isHovered(date) || isInside(date)"
+            (mouseenter)="hoveredDate = date"
+            (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+      </span>
+      </ng-template>
+    </div>
+    <div class="col">
+        <div class="row" >
+          <span class="form-group col" style="max-width: fit-content">
+            <input type="radio" class="form-check-input" [(ngModel)]="flight.type" [value]="1" name="oneWay" id="oneWay" checked>
+            <label for="oneWay" class="form-check-label">One way</label>
+          </span>
+          <span class="form-group col" style="max-width: fit-content">
+            <input type="radio" class="form-check-input" [(ngModel)]="flight.type" [value]="2" name="round" id="round">
+            <label for="round" class="form-check-label">Round trip</label>
+          </span>
+          <span class="form-group col" style="max-width: fit-content">
+            <input type="radio" class="form-check-input" [(ngModel)]="flight.type" [value]="3" name="multi" id="multi">
+            <label for="multi" class="form-check-label">Multi city</label>
+          </span>
+        </div>
+        <div class="form-group row">
+          <label for="class" class="form-check-label col-sm-2" style="max-width: fit-content">Seat class</label>
+          <select class="form-control col-sm-3" id="class" name="class" [(ngModel)]="flight.seatClass">
+            <option value="ECONOMY">Economy</option>
+            <option value="PREMIUM_ECONOMY">Premium economy</option>
+            <option value="BUSINESS">Business</option>
+            <option value="FIRST">First class</option>
+          </select>
+        </div>
+        <div class="form-group row">
+          <label for="persons" class="form-check-label col-sm-2" style="max-width: 100px" >Persons</label>
+          <input type="number" [(ngModel)]="flight['persons']" min="1" class="form-control col-sm-3" id="persons" name="class">
+        </div>
+    </div>
+  </div>
+  <button class="btn-primary btn" style="float: right">Search</button>
+
+</form>
+<br><br>
+<button class="btn btn-outline-primary pull-right" *ngIf="isFilterVisible === false" (click)="setFilterVisible()">Filter results</button>
+<div *ngIf="isFilterVisible === true" >
+  <h4>Filter by</h4>
+  <div class="row">
+    <div class="form-group col">
+      <h5 class="d-sm-table-row">Airline name</h5>
+      <input type="text" placeholder="Airline name" class="d-sm-table-row" [(ngModel)]="this.airlineNameFilter">
+    </div>
+    <div class="form-group col">
+      <h5 class="d-sm-table-row">Flight duration</h5>
+      <div class="row">
+        <label class="col-sm-3">From</label>
+        <input type="number" min="0" placeholder="From duration" class="d-sm-table-row" [(ngModel)]="this.fromDurationFilter">
+      </div>
+      <div class="row">
+        <label class="col-sm-3">To</label>
+        <input type="number" min="0" placeholder="To duration" class="d-sm-table-row" [(ngModel)]="this.toDurationFilter">
+      </div>
+    </div>
+      <div class="form-group col">
+        <h5 class="d-sm-table-row">Flight price</h5>
+        <div class="row">
+          <label class="col-sm-3">From</label>
+          <input type="number" min="0" placeholder="From price" class="d-sm-table-row" [(ngModel)]="this.fromPriceFilter">
+        </div>
+        <div class="row">
+          <label class="col-sm-3">To</label>
+          <input type="number" min="0" placeholder="To price" class="d-sm-table-row" [(ngModel)]="this.toPriceFilter">
+        </div>
+    </div>
+  </div>
+  <button class="btn btn-outline-primary pull-right" (click)="addFilter()">Filter results</button>
+</div>
+<br>
+<div class="list-group">
+  <div *ngFor="let flight of flights; index as i "
+       class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="w-100 justify-content-between">
+      <a (click)="flightProfile(flight)" >
+        <!-- <span class="glyphicon glyphicon-plane"></span>-->
+        <div class="d-flex-row">
+          <h5 class="col-sm-8"> From: {{flight['from']['name']}} {{flight['from']['shortName']}}, {{flight['from']['address']['city']}}, {{flight['from']['address']['country']}}</h5>
+          <h5 class="col-sm-8"> To: {{flight['to']['name']}} {{flight['to']['shortName']}}, {{flight['to']['address']['city']}}, {{flight['to']['address']['country']}} </h5>
+        </div>
+        <div class="flex-row">
+          <label class="col-sm-4">Departure: {{flight['departureDateAndTime'] | date:'dd/MM/yyyy hh:mm'}}</label>
+          <label class="col-sm-4">Arrival: {{flight['arrivalDateAndTime'] | date:'dd/MM/yyyy hh:mm'}}</label>
+          <!--<span class="mb-1 pull-right"><a (click)="deleteFlight(flight, i)"><img src="https://img.icons8.com/carbon-copy/100/000000/delete.png" width="30" height="30"></a></span>-->
+        </div>
+        <div class="flex-row">
+          <label class="col-sm-4">Distance: {{flight['distance']}}km</label>
+          <label class="col-sm-4">Duration: {{flight['duration']}}h</label>
+        </div>
+        <!--<div class="flex-row"><label class="col-sm-4">Price: {{flight['price']}}€</label></div>-->
+        <div class="flex-row"><label class="col-sm-4">Airline: <b>{{flight['airline']}}</b></label></div>
+
+      </a>
+    </div>
+  </div>
+</div>
+

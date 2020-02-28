@@ -1,0 +1,194 @@
+<form *ngIf="searchByNameShowForm"  (submit)="searchByName()">
+<div class="form-group row">
+  <label for="inputType" >Car service name:</label>
+  <div >
+    <input type="text" class="form-control" id="inputType" [(ngModel)]="searchName.serviceName"  name="type"><div> <button type="submit"  class="btn btn-primary">Search</button></div>
+  </div>
+</div>
+
+</form>
+
+
+
+<div class="list-group" *ngIf="showCarServices">
+
+  <div  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let carService of carServices" >
+    <div (click)="choose(carService)">
+      <div class="d-flex w-100 justify-content-between"  >
+        <h5 class="mb-1" >{{carService.name}}</h5> <p class="mb-1">{{carService.averageRating}}</p>
+      </div>
+      <p>Available affiliates:</p>
+      <ul class="list-group" *ngFor="let affiliate of carService['affiliates']">
+        <li class="list-group-item d-flex justify-content-between align-items-center" >
+          {{affiliate['address']['country']}}, {{affiliate['address']['city']}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="list-group" *ngIf="searchCarS">
+
+  <div  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let carService of searchedCarServices" >
+    <div (click)="choose(carService)">
+      <div class="d-flex w-100 justify-content-between"  >
+        <h5 class="mb-1" >{{carService.name}}</h5> <p class="mb-1">{{carService.averageRating}}</p>
+      </div>
+      <p>Available affiliates:</p>
+      <ul class="list-group" *ngFor="let affiliate of carService['affiliates']">
+        <li class="list-group-item d-flex justify-content-between align-items-center" >
+          {{affiliate['address']['country']}}, {{affiliate['address']['city']}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+<form  *ngIf="showForm">
+<div class="row">
+
+  <div class="col" >
+    <ngb-datepicker #dp (select)="onDateSelect($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+    </ngb-datepicker>
+    <ng-template #t let-date let-focused="focused">
+      <span class="custom-day"
+            [class.focused]="focused"
+            [class.range]="isRange(date)"
+            [class.faded]="isHovered(date) || isInside(date)"
+            (mouseenter)="hoveredDate = date"
+            (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+      </span>
+    </ng-template>
+  </div>
+  <div class="col">
+<div>
+  <div class="d-flex w-100 justify-content-between" >
+    <label for="pickUpAddres"> Pick up address: </label>
+    <select [(ngModel)]="forSearch.pickAddressId" id="pickUpAddres" name="pickUpAddres">
+      <option  *ngFor="let a of addresses" [value]="a.id">{{a.city}}, {{a.street}}, {{a.addressNumber}}</option>
+
+    </select>
+  </div>
+
+</div>
+    <br>
+
+  <div>
+    <div class="d-flex w-100 justify-content-between" >
+      <label for="dropOffA"> Drop off address: </label>
+      <select  [(ngModel)]="forSearch.dropAddressId" id="dropOffA" name="dropOffA">
+        <option *ngFor="let a of addresses" [value]="a.id" >{{a.city}}, {{a.street}}, {{a.addressNumber}}</option>
+
+      </select>
+
+    </div>
+
+  </div>
+    <br>
+<div>
+  <div class="d-flex w-100 justify-content-between" >
+    <label for="type"> Type of car: </label>
+    <select [(ngModel)]="forSearch.type" id="type" name="type">
+      <option *ngFor="let t of types" [value]="t"  >{{t}}</option>
+
+    </select>
+
+  </div>
+
+</div>
+    <br>
+<div>
+  <div class="d-flex w-100 justify-content-between" >
+    <label for = "numberOfSeats">Number of seats: </label>
+    <select [(ngModel)]="forSearch.numberOfSeats" id="numberOfSeats" name="numberOfSeats">
+      <option *ngFor="let n of numberOfSeats" [value]="n" >{{n}}</option>
+
+    </select>
+
+  </div>
+
+</div>
+    <br>
+
+    <div class="row">
+      <div class="col">
+      <div class="col form-group">
+    <label for="pickUp">Pick up time</label>
+        <br/>
+  <span><input  type="time" [(ngModel)]="pickUpTime" id="pickUp"name="pickUpTime"></span>
+    </div>
+
+      <div class="col form-group">
+    <label for="dropOff">Drop off time</label>
+        <br/>
+  <span><input  type="time" id = "dropOff" [(ngModel)]="dropOffTime" name="dropOffTime"></span>
+      </div>
+    </div>
+      <div class="col">
+        <div class="col form-group">
+          <label for="min">Minimal price </label>
+          <br/>
+         <input  type="text" [(ngModel)]="forSearch.minPrice" id="min"name="min">
+        </div>
+
+        <div class="col form-group">
+          <label for="max">Maximum price</label>
+          <br/>
+          <span><input  type="text" id = "max" [(ngModel)]="forSearch.maxPrice" name="max"></span>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<button  class="btn btn-primary pull-right" (click)="search()"  >Search</button>
+</form>
+
+
+<br><br>
+<form>
+<div class="list-group">
+  <div *ngFor="let car of availableCars; index as i "
+       class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="w-100 justify-content-between">
+      <a  >
+        <!-- <span class="glyphicon glyphicon-plane"></span>-->
+        <div class="d-flex-row">
+          <h5 class="col-sm-8"> {{car['name']}} </h5>
+        </div>
+        <div class="flex-row">
+          <label class="col-sm-4">Make: {{car['make']}}</label>
+          <label class="col-sm-4">Model: {{car['model'] }}</label>
+          <label class="col-sm-4">Average rating: {{car['averageRating']}}</label>
+        </div>
+        <div class="flex-row">
+          <label class="col-sm-4">Number of seats: {{car['numberOfSeats']}}</label>
+          <label class="col-sm-4">Type: {{car['type']}}</label>
+
+        </div>
+        <div class="flex-row"><label class="col-sm-4">Price for all days: {{car['price']}}€</label>
+          <label class="col-sm-4">Year of manufacture: {{car['yearOfManufacture']}}</label>
+
+        </div>
+
+        <button *ngIf="userRole === 'ROLE_USER'"  class="btn btn-primary pull-right" (click)="reserve(car)" >Reserve</button>
+
+      </a>
+    </div>
+  </div>
+
+</div>
+</form>
+
+
+
+

@@ -1,0 +1,24 @@
+<button *ngIf="userRole === 'ROLE_ADMIN_SERVICE' && user.inChargeOf === chargeOf" style="margin-left: 95%" class="btn btn-primary" [routerLink]="['/cars/new/'.concat(carServiceId) ]">New</button>
+<br/>
+<br/>
+
+<div class="list-group">
+  <div *ngFor="let car of cars"
+       class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="w-100 justify-content-between" (click)="carProfile(car)">
+      <div class="d-flex-row">
+        <h5 class="col-sm-4"> {{car['name']}}</h5>
+      </div>
+
+      <div class="flex-row"><label class="col-sm-4">Type: {{car['type']}}</label> <label class="col-sm-4">Number of seats: {{car['numberOfSeats']}}</label></div>
+      <div class="flex-row"><label class="col-sm-4">Make: {{car['make']}}</label><label class="col-sm-4">Price: {{car['price']}}€/day</label></div>
+      <div class="flex-row"><label class="col-sm-4">Model: {{car['model']}}</label></div>
+      <div class="flex-row"><label class="col-sm-4">Year of manufacture:{{car['yearOfManufacture']}}</label></div>
+      <div class="flex-row"><label class="col-sm-4">Average rating:{{car['averageRating']}}</label></div>
+
+    </div>
+    <span><a *ngIf="userRole === 'ROLE_ADMIN_SERVICE' && user.inChargeOf === car.carServiceId" (click)="deleteCar(car)"><img src="https://img.icons8.com/carbon-copy/100/000000/delete.png" width="30" height="30"></a></span>
+  </div>
+</div>
+
+

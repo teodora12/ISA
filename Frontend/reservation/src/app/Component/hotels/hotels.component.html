@@ -1,0 +1,23 @@
+
+<div class="btn-toolbar" style="margin-left: 95%" *ngIf="userRole === 'ROLE_ADMIN'" >
+
+    <button  class="btn btn-primary" routerLink='/hotels/new'>New</button>
+    <br/>
+
+
+</div>
+
+
+<div class="list-group">
+
+  <div (click)="hotelProfile(hotel)" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let hotel of hotels" >
+    <div class="d-flex w-100 justify-content-between" >
+      <h5 class="mb-1">{{hotel.name}}</h5>
+      <small>{{hotel.name}}</small>
+
+    </div>
+    <p class="mb-1">{{hotel.description}}</p>
+
+  </div>
+</div>
+

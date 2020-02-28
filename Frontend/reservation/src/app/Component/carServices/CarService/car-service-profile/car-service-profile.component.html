@@ -1,0 +1,135 @@
+<div class="nav flex-row nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+  <a class="nav-link nav-item active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+     aria-controls="v-pills-home" aria-selected="true">General</a>
+  <a class="nav-link nav-item" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+     aria-controls="v-pills-profile" aria-selected="false">Cars</a>
+</div>
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <div *ngIf="userRole === 'ROLE_ADMIN_SERVICE' && user.inChargeOf === carService.id">
+      <br />
+      <form (submit)="saveCarService()">
+        <div class="form-group row">
+          <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName3" placeholder="Name" [(ngModel)]="carService['name']"
+                   name="name">
+          </div>
+        </div>
+
+        <br/>
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+          <div class="col-sm-10">
+            <input id="inputName" placeholder="Search for location" autocomplete="true" autocapitalize="off"
+                   spellcheck="false" type="text" class="form-control" #search [formControl]="searchControl">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="inputACountry3" class="col-sm-2 col-form-label">Country</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputACountry3" placeholder="Country"
+                     aria-multiline="true" [(ngModel)]="carService['address']['country']" name="country">
+            </div>
+            <div class="form-group">
+              <label for="inputCity3" class="col-sm-2 col-form-label">City</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputCity3" placeholder="Address"
+                     aria-multiline="true" [(ngModel)]="carService['address']['city']" name="city">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="inputStreet3" class="col-sm-2 col-form-label">Street</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputStreet3" placeholder="Street"
+                     aria-multiline="true" [(ngModel)]="carService['address']['street']" name="street">
+            </div>
+            <div class="form-group">
+              <label for="inputAddressNumber3" class="col-sm-2 col-form-label">Number</label>
+              <input type="text" readonly="readonly" class="form-control" id="inputAddressNumber3"
+                     placeholder="Street number" aria-multiline="true" [(ngModel)]="carService['address']['addressNumber']"
+                     name="addressNumber">
+            </div>
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+        </div>
+
+        <div class="form-group">
+          <label for="descriptionTextarea1">Advertising description</label>
+          <textarea class="form-control" id="descriptionTextarea1" rows="3" [(ngModel)]="carService.description"
+                    name="description"></textarea>
+        </div>
+        <br/>
+        <div class="form-group"><label>Available affiliates</label>  <button *ngIf="userRole === 'ROLE_ADMIN_SERVICE' && user.inChargeOf === carService.id" class="btn btn-primary pull-right"
+                                                                                 [routerLink]="['/affiliates/new/'.concat(carService.id)]">New affiliate</button>
+        </div>
+
+        <ul class="list-group" *ngFor="let affiliate of carService['affiliates']">
+          <li class="list-group-item d-flex justify-content-between align-items-center" (click)="affiliateProfile(affiliate)">
+            {{affiliate['name']}} ({{affiliate['address']['country']}}, {{affiliate['address']['city']}})
+            <span><a *ngIf="userRole === 'ROLE_ADMIN_SERVICE' && user.inChargeOf === carService.id" (click)="deleteAffiliate(affiliate)"><img src="https://img.icons8.com/carbon-copy/100/000000/delete.png" width="30" height="30"></a></span>
+          </li>
+        </ul>
+
+
+        <br/>
+        <div class="form-group row" align="right">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="!(userRole === 'ROLE_ADMIN_SERVICE' && user.inChargeOf === carService.id)">
+      <div class="form-group row">
+        <label for="inputName1" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <label class="form-control" id="inputName1" name="name">{{carService['name']}}</label>
+        </div>
+      </div>
+      <br/>
+      <div class="form-group row">
+        <label for="address" class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-6">
+          <label class="form-control" id="address">{{carService['address']['country']}}, {{carService['address']['city']}}
+            , {{carService['address']['street']}}, {{carService['address']['addressNumber']}}</label>
+        </div>
+        <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+          <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        </agm-map>
+      </div>
+
+      <div class="form-group">
+        <label for="inputDescription">Advertising description</label>
+    <!--    <textarea  class="form-control" id="d" rows="3"  [(ngModel)]="carService.description" name="description"></textarea> -->
+        <label class="form-control" id="inputDescription" name="description">{{carService['description']}}</label>
+      </div>
+      <br/>
+
+      <div class="form-group"><label>Available affiliates</label></div>
+      <ul (click)="affiliateProfile(affiliate)" class="list-group" *ngFor="let affiliate of carService['affiliates']">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{affiliate['name']}} ({{affiliate['address']['country']}}, {{affiliate['address']['city']}})
+
+        </li>
+      </ul>
+
+      <br/>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    <br />
+    <app-cars></app-cars>
+  </div>
+
+
+  </div>

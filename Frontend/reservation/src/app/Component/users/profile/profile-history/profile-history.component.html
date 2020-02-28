@@ -1,0 +1,82 @@
+
+<div class="list-group">
+
+  <div  class="list-group-item  flex-column align-items-start" *ngFor="let flightReservation of flightReservations; index as i" >
+    <div class="col">
+      <!--<div class="d-flex w-100 justify-content-between" >-->
+        <!--<h5 > {{carReservation['carDto']['name']}}</h5>-->
+      <!--</div>-->
+
+      <div class="row">
+        <label><b>From: </b></label>
+        <h5 class="mb-1"> {{flightReservation['flight']['fromDest']['destination']['name']}} {{flightReservation['flight']['fromDest']['destination']['shortName']}}, {{flightReservation['flight']['fromDest']['destination']['address']['country']}}, {{flightReservation['flight']['fromDest']['destination']['address']['city']}}</h5>
+      </div>
+      <div class="row">
+        <label><b>To: </b></label>
+        <h5 class="mb-1"> {{flightReservation['flight']['toDest']['destination']['name']}} {{flightReservation['flight']['toDest']['destination']['shortName']}}, {{flightReservation['flight']['toDest']['destination']['address']['country']}}, {{flightReservation['flight']['toDest']['destination']['address']['city']}}</h5>
+      </div>
+      <div class="row">
+        <label>Departure: </label>
+        <p class="mb-1"> {{flightReservation['flight']['departureDateAndTime'] | date:'dd/MM/yyyy hh:mm'}} </p>
+      </div>
+      <div class="row">
+        <label>Arrival: </label>
+        <p class="mb-1"> {{flightReservation['flight']['arrivalDateAndTime'] | date:'dd/MM/yyyy hh:mm'}} </p>
+      </div>
+      <button class="btn btn-outline-primary pull-right" *ngIf="!flightReservation.isValid && flightReservation.canCancel" (click)="cancelFlightReservation(flightReservation, i)">Cancel reservation</button>
+    </div>
+
+    <div *ngIf="flightReservation.isValid"  class="col pull-right" >
+      <ng-template  #t let-fill="fill" >
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+        </span>
+      </ng-template>
+
+      <label>Flight rating:</label> <ngb-rating  [(rate)]="flightReservation['flightRating']" [starTemplate]="t"  max="5" ></ngb-rating>
+      <pre> <button class="btn btn-outline-primary" (click)="rateFlight(flightReservation['flightRating'], flightReservation)">Rate flight</button></pre> <div class="row"></div>
+      <label>Airline rating:</label> <ngb-rating   [(rate)]="flightReservation['airlineRating']" [starTemplate]="t"  max="5"></ngb-rating>
+      <pre> <button class="btn btn-outline-primary" (click)="rateAirline(flightReservation['airlineRating'], flightReservation)">Rate airline</button></pre>
+
+    </div>
+  </div>
+
+  <div  class="list-group-item  flex-column align-items-start" *ngFor="let carReservation of listCarReservations; index as j" >
+    <div class="col">
+      <div class="d-flex w-100 justify-content-between" >
+        <h5 > {{carReservation['carDto']['name']}}</h5>
+      </div>
+
+     <div class="row">   <label>Pick up date: </label> <p class="mb-1"> {{carReservation['pickUpDate']}}</p>
+
+     </div>
+    <div class="row">   <label>Drop off date: </label> <p class="mb-1"> {{carReservation['dropOffDate']}}</p></div>
+      <div class="row">   <label>Pick up address: </label><p class="mb-1"> {{carReservation['pickUpAddress']['city']}}, {{carReservation['pickUpAddress']['street']}} </p></div>
+        <div class="row">    <label>Drop off adress: </label><p class="mb-1"> {{carReservation['dropOffAddress']['city']}}, {{carReservation['dropOffAddress']['street']}} </p></div>
+      <button class="btn btn-outline-primary pull-right" (click)="cancelCarReservation(carReservation, j)">Cancel car reservation </button>
+    </div>
+
+    <div *ngIf="carReservation.isValid"  class="col pull-right" > <!-- *ngIf="todayD > carReservation['dropOffDate']"  -->
+      <ng-template  #t let-fill="fill" >
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+        </span>
+        </ng-template>
+
+        <label>Car rating:</label> <ngb-rating  [(rate)]="carReservation.carRating" [starTemplate]="t"  max="5" ></ngb-rating>
+          <pre> <button class="btn btn-outline-primary" (click)="rateCarFun(carReservation.carRating, carReservation)">Rate car</button></pre> <div class="row"></div>
+        <label>Car service rating:</label> <ngb-rating   [(rate)]="carReservation.carServiceRating" [starTemplate]="t"  max="5"></ngb-rating>
+          <pre> <button class="btn btn-outline-primary" (click)="rateCarServisFun(carReservation.carServiceRating, carReservation)">Rate car servis</button></pre>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

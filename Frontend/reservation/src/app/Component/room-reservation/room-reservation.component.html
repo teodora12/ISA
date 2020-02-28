@@ -1,0 +1,119 @@
+
+<div *ngIf="showHotelName">
+  <!-- <h2 class="card-title" [(ngModel)]="hotel" > {{hotel.name}} </h2>  -->
+</div>
+
+<div class="list-group" *ngIf="showHotels">
+
+  <div  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let hotel of hotels" >
+    <div class="d-flex w-100 justify-content-between" (click)="choose(hotel)" >
+      <h5 class="mb-1" >{{hotel.name}}</h5> <p class="mb-1">{{hotel.averageRating}}</p>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+<form  *ngIf="showForm">
+  <div class="row">
+
+    <div class="col" >
+      <ngb-datepicker #dp (select)="onDateSelect($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+      </ngb-datepicker>
+      <ng-template #t let-date let-focused="focused">
+      <span class="custom-day"
+            [class.focused]="focused"
+            [class.range]="isRange(date)"
+            [class.faded]="isHovered(date) || isInside(date)"
+            (mouseenter)="hoveredDate = date"
+            (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+      </span>
+      </ng-template>
+    </div>
+    <div class="col">
+      <br>
+      <br>
+      <div>
+        <div class="d-flex w-100 justify-content-between" >
+          <label for="numberOfBeds"> Type of room: </label>
+          <select [(ngModel)]="forSearch.numberOfBeds" id="numberOfBeds" name="numberOfBeds">
+            <option *ngFor="let num of numberOfBeds" [value]="num"  >{{num}} - beds</option>
+
+          </select>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <div class="row">
+        <div class="col">
+          <div class="col form-group">
+            <label for="arrival">Arrival time</label>
+            <br/>
+            <span><input  type="time" [(ngModel)]="arrivalTime" id="arrival" name="arrivalTime"></span>
+          </div>
+
+          <div class="col form-group">
+            <label for="departure">Departure time</label>
+            <br/>
+            <span><input  type="time" id = "departure" [(ngModel)]="departureTime" name="departureTime"></span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col form-group">
+            <label for="min">Minimal price </label>
+            <br/>
+            <input  type="text" [(ngModel)]="forSearch.minPrice" id="min"name="min">
+          </div>
+
+          <div class="col form-group">
+            <label for="max">Maximum price</label>
+            <br/>
+            <span><input  type="text" id = "max" [(ngModel)]="forSearch.maxPrice" name="max"></span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <button  class="btn btn-primary pull-right" (click)="search()"  >Search</button>
+</form>
+
+
+<br><br>
+<form>
+  <div class="list-group" *ngIf="showAvailableRooms">
+    <div *ngFor="let room of availableRooms; index as i "
+         class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="w-100 justify-content-between">
+        <a  >
+          <!-- <span class="glyphicon glyphicon-plane"></span>-->
+          <div class="d-flex-row">
+            <h5 class="col-sm-8"> {{room['name']}} </h5>
+          </div>
+          <div class="flex-row">
+            <label class="col-sm-4">Number of guests: {{room['maxNumberOfGuests']}}</label>
+            <label class="col-sm-4">Number of beds: {{room['numberOfBeds'] }}</label>
+            <label class="col-sm-4">Average rating: {{room['averageRating']}}</label>
+            <label class="col-sm-4">Number of nights: {{room['numberOfNights']}} </label>
+          </div>
+
+          <div class="flex-row">
+            <label class="col-sm-4">Price for all days: {{room['price']}}€</label>
+          </div>
+          <button  class="btn btn-primary pull-right" (click)="reserve(room)" >Reserve</button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <button *ngIf="showFinish" class="btn btn-primary" style="alignment: center" (click)="finishedRoomReservation()"> Finish room reservation </button>
+
+</form>
+

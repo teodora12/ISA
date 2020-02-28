@@ -1,0 +1,37 @@
+<div class="nav flex-row nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+  <a class="nav-link nav-item active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+     aria-controls="v-pills-home" aria-selected="true">General</a>
+  <a class="nav-link nav-item" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+     aria-controls="v-pills-profile" aria-selected="false" *ngIf="userRole === 'ROLE_USER'">Friends</a>
+
+
+  <a class="nav-link nav-item" id="v-pills-profile-tab1" data-toggle="pill" href="#v-pills-profile1" role="tab"
+     aria-controls="v-pills-profile1" aria-selected="false" *ngIf="userRole === 'ROLE_USER'">History</a>
+
+  <a class="nav-link nav-item" id="v-pills-airline-tab1" data-toggle="pill" href="#v-pills-airline" role="tab"
+     aria-controls="v-pills-airline" aria-selected="false" *ngIf="userRole === 'ROLE_ADMIN_AIRLINE'">Airline data</a>
+
+</div>
+
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <app-profile-user-info></app-profile-user-info>
+  </div>
+
+  <div class="tab-pane fade show" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile" *ngIf="userRole === 'ROLE_USER'">
+    <div>
+      <app-profile-friends></app-profile-friends>
+    </div>
+  </div>
+
+  <div class="tab-pane fade show" id="v-pills-profile1" role="tabpanel" aria-labelledby="v-pills-profile1" *ngIf="userRole === 'ROLE_USER'">
+    <div>
+      <app-profile-history></app-profile-history>
+    </div>
+  </div>
+  <div class="tab-pane fade show" id="v-pills-airline" role="tabpanel" aria-labelledby="v-pills-airline" *ngIf="userRole === 'ROLE_ADMIN_AIRLINE'">
+    <div>
+      <app-admin-airline></app-admin-airline>
+    </div>
+  </div>
+</div>
